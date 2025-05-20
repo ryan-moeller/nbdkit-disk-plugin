@@ -4,6 +4,10 @@
 devices such as ATA disks, SCSI disks, or ZFS volumes.  This plugin implements
 the basic necessities for serving the devices.
 
+For a more feature-rich FreeBSD disk devices plugin with a runtime-reloadable
+libucl configuration file, see
+[nbdkit-disks-plugin](https://github.com/ryan-moeller/nbdkit-disks-plugin).
+
 ## Prerequisites
 
 The only dependency is nbdkit, which can be installed by `pkg` or from ports.
