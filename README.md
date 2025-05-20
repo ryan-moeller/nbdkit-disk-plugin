@@ -16,12 +16,31 @@ The port/package is quite outdated, and more functionality can be enabled by
 building and installing nbdkit from source before building the plugin.  The
 version in ports does not support reporting block size properties of the device.
 
-## Usage
+The example below uses git to clone the sources from GitHub, but one could
+simply download the sources as a ZIP from GitHub using fetch.
 
-Serve a 40GB ZFS volume named `storage/nbdvol`:
+## Building
+
+Clone, build, and install the plugin:
 
 ```
-# make
+$ git clone https://github.com/ryan-moeller/nbdkit-disk-plugin.git
+$ cd nbdkit-disk-plugin
+$ make
+# make install # (optional) avoid needing to specify full path to shared library
+```
+
+## Usage
+
+Serve a 40GB ZFS volume named `storage/nbdvol` without running `make install`:
+
+```
 # zfs create -V 40G storage/nbdvol
 # nbdkit ./nbdkit-disk-plugin.so /dev/zvol/storage/nbdvol
+```
+
+Serve `/dev/md0` after running `make install`:
+
+```
+# nbdkit disk /dev/md0
 ```
